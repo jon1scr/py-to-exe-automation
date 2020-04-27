@@ -1,11 +1,15 @@
 import os
 import shutil
-from sys import argv
+import sys
 
-py_file = argv[1]
+if len(sys.argv) < 2:
+    print('Usage: mkexe <py_file>')
+    sys.exit()
+
+py_file = sys.argv[1]
 os.system(f'pyinstaller --onefile {py_file}')
 
-distDir = os.getcwd() + '\dist\\'
+distDir = os.getcwd() + '/dist/'
 exeFile = distDir + os.listdir(distDir)[0]
 
 for f in os.listdir():
